@@ -1,6 +1,6 @@
 # Báo cáo cá nhân — Day 6
 
-**Phạm Tuấn Cường · 2A202603584 · L3A.** Thời điểm chạy: 2026-11-13, khoảng 10:36–10:50 (UTC+7).
+**Phạm Tuấn Cường · 2A202603584 ·
 
 ## Dữ liệu và pipeline
 
