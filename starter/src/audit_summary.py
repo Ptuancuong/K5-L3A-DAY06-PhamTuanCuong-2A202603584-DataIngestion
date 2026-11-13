@@ -13,6 +13,11 @@ def _rows(name):
         return list(csv.DictReader(f))
 
 
+def _is(value, flag: bool) -> bool:
+    """Spreadsheet-tolerant boolean check: Excel rewrites True/False as TRUE/FALSE."""
+    return str(value).strip().lower() == str(flag).lower()
+
+
 def main() -> None:
     out: dict = {"labeled_by": sorted({r.get("labeled_by", "") for n in
                                       ("coherence.csv", "grounding.csv", "metadata_audit.csv") for r in _rows(n)})}
@@ -35,10 +40,10 @@ def main() -> None:
     for r in _rows("metadata_audit.csv"):
         m = meta[r["strategy"]]
         m["records"] += 1
-        m["all_correct"] += r["all_correct"] == "True"
+        m["all_correct"] += _is(r["all_correct"], True)
         if r["question_filter"] != "null":
             m["filter_questions"].add(r["question_id"])
-            if r["auto_filter_ok"] == "False":
+            if _is(r["auto_filter_ok"], False):
                 m["filter_violations"].add(r["question_id"])
     out["metadata"] = {s: {"correct_str": f"{m['all_correct']}/{m['records']}",
                            "filter_compliance_str": f"{len(m['filter_questions']) - len(m['filter_violations'])}/{len(m['filter_questions'])}",

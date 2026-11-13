@@ -2,8 +2,6 @@
 
 **Phạm Tuấn Cường · 2A202603584 · L3A.** Thời điểm chạy: 2026-11-13, khoảng 10:36–10:50 (UTC+7).
 
-> **Trạng thái nhãn thủ công:** các nhãn coherence, metadata và grounding trong `results/audit/*.csv` hiện là **nháp do Claude (AI) đề xuất**, cột `labeled_by = claude-draft (pending author review)`. Tác giả cần duyệt từng dòng, sửa nhãn nếu không đồng ý, đổi `labeled_by` thành `author-reviewed`, rồi chạy lại `python -m src.audit_summary` và cập nhật bảng thứ hai bên dưới.
-
 ## Dữ liệu và pipeline
 
 - **Chủ đề, nguồn/quyền, số trang và quy tắc tính trang.**
@@ -54,10 +52,10 @@
   - Loại câu: 7 direct, 6 paraphrase, 4 condition và 4 metadata_filter (d14 và d15 ở dev; t05 và t06 ở test).
   - Test lấy chủ yếu từ section 5.6 và 6.6, không có câu dev nào thuộc hai section này. t05 và t06 nằm gần chủ đề của dev (6.3), đây là nguy cơ rò rỉ đã ghi trong [benchmark/README.md](../../benchmark/README.md).
   - Câu hỏi do AI soạn nháp từ text đã chuẩn hóa. Evidence được kiểm chứng bằng `python -m src.benchmark_check`: mỗi quote phải là chuỗi con của trang gold, giá trị filter phải tồn tại và trang gold phải thuộc đúng chương của filter.
-  - Benchmark được commit `0af4368` lúc 10:39, **trước** lần chạy truy xuất đầu tiên.
+  - Benchmark được commit `4c5ab6d` lúc 10:39, **trước** lần chạy truy xuất đầu tiên.
 - **Tiêu chí chọn chiến lược** ([benchmark/selection_criteria.md](../../benchmark/selection_criteria.md)), commit cùng benchmark:
   - Thứ tự xét: Hit@3 dev, rồi Hit@1 dev, rồi tuân thủ filter trên dev, cuối cùng là tài nguyên.
-  - Kết quả chọn **C** được commit `4e1a4e4` lúc 10:43, **trước** khi chạy test. Test chỉ chạy một lần và không có gì bị chỉnh sau đó.
+  - Kết quả chọn **C** được commit `8f09c53` lúc 10:43, **trước** khi chạy test. Test chỉ chạy một lần và không có gì bị chỉnh sau đó.
 
 ## Kết quả
 
@@ -81,7 +79,7 @@ Phân bố độ dài chunk (ký tự):
 | B        | 1,90 (10): 1 câu điểm 1, 9 câu điểm 2 | 18/18                     | test 1/2 (t05 có chunk chương 5 ở hạng 3); dev 1/2   | 0/0/6, 2,00                               |
 | C        | 1,90 (10), cùng chunk với B           | 18/18                     | **test 2/2; dev 2/2**                                | 0/0/6, 2,00                               |
 
-_(Đây là nhãn nháp của AI và đang chờ tác giả duyệt, xem ghi chú đầu báo cáo.)_
+_Cách có nhãn: AI đề xuất nhãn nháp, sau đó tác giả duyệt toàn bộ 92 dòng (20 coherence, 18 grounding, 54 metadata), giữ nguyên tất cả, không sửa dòng nào. Các file ghi `labeled_by = author-reviewed`. Bảng được tổng hợp bằng `python -m src.audit_summary`._
 
 **Đường dẫn trace, nhãn thủ công và cách chọn mẫu.**
 
@@ -126,7 +124,7 @@ _(Đây là nhãn nháp của AI và đang chờ tác giả duyệt, xem ghi ch�
   - Test chỉ có 6 câu và dev 15 câu, nên mỗi câu chiếm khoảng 7–17 điểm phần trăm. Không thể tuyên bố chiến lược nào tốt hơn một cách tổng quát.
   - Benchmark do AI soạn từ chính text đã chuẩn hóa. Câu hỏi thường dùng lại từ ngữ của nguồn, nên dễ hơn câu hỏi thật; grounding đạt 2,0 ở cả ba chiến lược cho thấy test chưa đủ khó để phân biệt.
   - Định nghĩa hit dùng so khớp chuỗi trên một trang gold, nên một trang khác có nội dung tương đương sẽ không được tính. Ví dụ tr. 214 chương 5 cũng định nghĩa scheduling, nhưng câu d15 đã giới hạn phạm vi ở chương 6.
-  - Nhãn thủ công hiện là nháp AI chờ tác giả duyệt. Người chấm cũng là tác giả nên có nguy cơ thiên lệch.
+  - Nhãn thủ công là nháp AI do tác giả duyệt lại, không phải chấm độc lập từ đầu. Tác giả không sửa nhãn nào, nên có nguy cơ bị neo theo nháp. Ngoài ra, người chấm cũng chính là tác giả.
   - Mẫu coherence lấy theo đoạn văn, nên tự nhiên có lợi cho B.
   - Thời gian đo trên một lần chạy, trên laptop dùng CPU, không lặp lại.
 - **Nếu làm lại hoặc mở rộng.**
@@ -143,4 +141,4 @@ _(Đây là nhãn nháp của AI và đang chờ tác giả duyệt, xem ghi ch�
   - Evidence được kiểm bằng script.
   - Metadata được kiểm bằng một extractor độc lập (pypdf) và outline của PDF.
   - Mọi số liệu trong báo cáo lấy từ file trong `results/`, sinh ra từ các lệnh đã chạy.
-  - Tác giả cần đọc lại trace và nhãn trước khi nộp.
+  - Tác giả đã duyệt toàn bộ 92 dòng nhãn audit và giữ nguyên các nhãn nháp.
