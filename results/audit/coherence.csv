@@ -1,0 +1,119 @@
+﻿position_id,page,position_char,source_paragraph_start,strategy,chunk_id,chunk_len,chunk_text,score_0_1_2,reason,labeled_by
+pos01,204,492,"A company called TechWorks is taking advantage of leverages such as the latest nanotechnology, processor models known as neuromorphic processors, to enable the ",A,A:openstax-intro-cs:p204:c0,500,"a text editor, or a web browser. In this chapter, you will learn how computers can do computations in a fast and correct manner using processors, memory, disks, and other related hardware.
+
+A company called TechWorks is taking advantage of leverages such as the latest nanotechnology, processor models known as neuromorphic processors, to enable the creation of the next generation of super society intelligent autonomous solutions (e.g., advanced robotics, autonomous cars and drones, or other auton",1,"TechWorks paragraph cut mid-word ('auton'); first half understandable, Loihi 2 detail lost.",claude-draft (pending author review)
+pos01,204,492,"A company called TechWorks is taking advantage of leverages such as the latest nanotechnology, processor models known as neuromorphic processors, to enable the ",B (also C),B:openstax-intro-cs:p204:c0,899,"a text editor, or a web browser. In this chapter, you will learn how computers can do computations in a fast and correct manner using processors, memory, disks, and other related hardware.
+
+A company called TechWorks is taking advantage of leverages such as the latest nanotechnology, processor models known as neuromorphic processors, to enable the creation of the next generation of super society intelligent autonomous solutions (e.g., advanced robotics, autonomous cars and drones, or other autonomous systems). The use of Intel’s Kapoho Point 8-chip Loihi 2 board technology allows TechWorks’ developers to solve larger problems by stacking large-scale workloads and enabling AI models with up to one billion parameters and solving optimization problems with up to eight million variables.
+
+5.1 Computer Systems Organization
+
+Learning Objectives By the end of this section, you will be able to:",2,"Whole TechWorks paragraph kept; starts with a page-boundary fragment and ends with the dangling heading '5.1 ... Learning Objectives', but the sampled idea is complete.",claude-draft (pending author review)
+pos02,205,367,"programs to function. For example, the media player is a program, and the songs that you listen to using the media player are data. So, the hardware executes pr",A,A:openstax-intro-cs:p205:c0,499,"programs to function. For example, the media player is a program, and the songs that you listen to using the media player are data. So, the hardware executes programs that are fed with data. Computers come in different shapes, from the small ones in your smartwatch, for example, to big supercomputers. Different computers may have different components besides the components that exist in all computer shapes. Bigger computers, datacenters, and supercomputers need extra components for getting data",1,Cut mid-sentence ('getting data'); starts with page-boundary fragment 'programs to function.',claude-draft (pending author review)
+pos02,205,367,"programs to function. For example, the media player is a program, and the songs that you listen to using the media player are data. So, the hardware executes pr",B (also C),B:openstax-intro-cs:p205:c0,766,"programs to function. For example, the media player is a program, and the songs that you listen to using the media player are data. So, the hardware executes programs that are fed with data. Computers come in different shapes, from the small ones in your smartwatch, for example, to big supercomputers. Different computers may have different components besides the components that exist in all computer shapes. Bigger computers, datacenters, and supercomputers need extra components for getting data from multiple sources, more sophisticated parts to connect to the Internet, and cooling equipment. Mainframes that were created a few decades ago are big computers used for a different purpose. You don’t need those in your smartphone.
+
+Data Storage Inside a Computer",2,Paragraph complete; only the leading clause continues from the previous page; trailing heading 'Data Storage Inside a Computer' is noise.,claude-draft (pending author review)
+pos03,206,175,"(Figure 5.3). This special software that translates HLLs to executables includes tools called compilers, assemblers, and linkers. We will not discuss these tool",A,A:openstax-intro-cs:p206:c0,499,"(Figure 5.3). This special software that translates HLLs to executables includes tools called compilers, assemblers, and linkers. We will not discuss these tools here, (refer to 5.2 Computer Levels of Abstraction and 5.4 Machine-Level Program Representation), but we now know what they do. Here, we will look at how the hardware executes instructions.
+
+Figure 5.3 Programs developed in high-level languages (HLLs) such as C++, Java, or Python are then translated into executables that a computer can",1,'This special software' refers to the previous page (antecedent lost at page boundary); caption cut at the end.,claude-draft (pending author review)
+pos03,206,175,"(Figure 5.3). This special software that translates HLLs to executables includes tools called compilers, assemblers, and linkers. We will not discuss these tool",B (also C),B:openstax-intro-cs:p206:c0,538,"(Figure 5.3). This special software that translates HLLs to executables includes tools called compilers, assemblers, and linkers. We will not discuss these tools here, (refer to 5.2 Computer Levels of Abstraction and 5.4 Machine-Level Program Representation), but we now know what they do. Here, we will look at how the hardware executes instructions.
+
+Figure 5.3 Programs developed in high-level languages (HLLs) such as C++, Java, or Python are then translated into executables that a computer can run.
+
+Hardware Organization of Systems",1,Same page-boundary problem as A: 'This special software' lacks its antecedent; chunks never cross pages.,claude-draft (pending author review)
+pos04,207,431,One final piece of hardware inside the CPU is the I/O interface. The input/output (I/O) interface helps the CPU talk to the other I/O devices such as a keyboard,A,A:openstax-intro-cs:p207:c0,500,"Figure 5.4 Any computer system consists of several components that, together, help the computer do its job of executing programs.
+
+One final piece of hardware inside the CPU is the I/O interface. The input/output (I/O) interface helps the CPU talk to the other I/O devices such as a keyboard or mouse. All the pieces—CPU, memory, graphics card—are connected via a collection of wires referred to as a bus. The purpose of a bus is to transfer data between the various pieces in the computer. Buses can",1,I/O interface and bus explanation cut mid-sentence ('Buses can').,claude-draft (pending author review)
+pos04,207,431,One final piece of hardware inside the CPU is the I/O interface. The input/output (I/O) interface helps the CPU talk to the other I/O devices such as a keyboard,B (also C),B:openstax-intro-cs:p207:c0,955,"Figure 5.4 Any computer system consists of several components that, together, help the computer do its job of executing programs.
+
+One final piece of hardware inside the CPU is the I/O interface. The input/output (I/O) interface helps the CPU talk to the other I/O devices such as a keyboard or mouse. All the pieces—CPU, memory, graphics card—are connected via a collection of wires referred to as a bus. The purpose of a bus is to transfer data between the various pieces in the computer. Buses can differ in speed, which affects how fast the data are transferred. Figure 5.4 uses the generic word interconnect to designate buses. We can add more devices to the computer system such as a different display through expansion slots.
+
+LINK TO LEARNING
+
+Read this concise history of computers starting from the nineteenth century (https://openstax.org/r/ 76CompHistory19) to see how computers have changed and been developed over time.
+
+Input/Output Devices",2,"I/O interface and bus paragraph complete, plus a LINK TO LEARNING box; trailing heading noise.",claude-draft (pending author review)
+pos05,208,410,"For the CPU to execute programs and process data stored locally, it needs to obtain them from the computer's disk. But a disk is very slow. So, the CPU brings w",A,A:openstax-intro-cs:p208:c0,500,"Main Memory
+
+For the CPU to execute programs and process data stored locally, it needs to obtain them from the computer's disk. But a disk is very slow. So, the CPU brings what it needs from the disk and temporarily stores it in faster storage referred to as main memory or random access memory (RAM). When you buy a laptop, one of the specifications is the amount of memory it has, such as 16 GB of RAM or 32 GB of RAM. The main memory is much faster than the disk and connected to the CPU with a fa",1,Main memory paragraph cut mid-word ('with a fa'); RAM copy/execute step lost.,claude-draft (pending author review)
+pos05,208,410,"For the CPU to execute programs and process data stored locally, it needs to obtain them from the computer's disk. But a disk is very slow. So, the CPU brings w",B (also C),B:openstax-intro-cs:p208:c0,818,"Main Memory
+
+For the CPU to execute programs and process data stored locally, it needs to obtain them from the computer's disk. But a disk is very slow. So, the CPU brings what it needs from the disk and temporarily stores it in faster storage referred to as main memory or random access memory (RAM). When you buy a laptop, one of the specifications is the amount of memory it has, such as 16 GB of RAM or 32 GB of RAM. The main memory is much faster than the disk and connected to the CPU with a faster interconnect, as shown in Figure 5.4. When you click an icon to start a program (e.g., your web browser), the program and its needed data are copied from the disk to the main memory. Then, the CPU reads the data and instructions from the memory into the CPU’s registers and the ALU starts executing it.
+
+Processor",2,Main memory paragraph complete including how programs are copied to RAM; trailing heading 'Processor'.,claude-draft (pending author review)
+pos06,209,239,"Computers are just a tool used to solve a problem. You may use computers to play games or listen to music, and in these cases, the problems that the computer is",A,A:openstax-intro-cs:p209:c0,499,"Figure 5.5 A computer system can be viewed at several levels of abstraction, each one layered on top of the other.
+
+Computers are just a tool used to solve a problem. You may use computers to play games or listen to music, and in these cases, the problems that the computer is trying to solve are associated with programs that you use for entertainment purposes.
+
+The top line in Figure 5.5 starts with the problem; we must have a very precise definition of the problem we are trying to solve with a",2,Sampled paragraph ('Computers are just a tool...') fully inside the chunk; next paragraph cut but not needed.,claude-draft (pending author review)
+pos06,209,239,"Computers are just a tool used to solve a problem. You may use computers to play games or listen to music, and in these cases, the problems that the computer is",B (also C),B:openstax-intro-cs:p209:c0,362,"Figure 5.5 A computer system can be viewed at several levels of abstraction, each one layered on top of the other.
+
+Computers are just a tool used to solve a problem. You may use computers to play games or listen to music, and in these cases, the problems that the computer is trying to solve are associated with programs that you use for entertainment purposes.",2,Sampled paragraph complete and self-contained (short 362-char chunk).,claude-draft (pending author review)
+pos07,210,273,"Next, the programmer writes a program. The main difference between an algorithm and a program is that the former is written by an algorithm designer and the lat",A,A:openstax-intro-cs:p210:c0,499,"Application Programs Abstractions
+
+Next, the programmer writes a program. The main difference between an algorithm and a program is that the former is written by an algorithm designer and the latter is written by a programmer so that the program can be executed by a machine. These programs are called application programs, or simply, programs, and there are billions of them in existence today. Once the programmer finishes writing the program, there are two more steps before it can be executed by",1,Application-programs paragraph cut mid-sentence ('executed by').,claude-draft (pending author review)
+pos07,210,273,"Next, the programmer writes a program. The main difference between an algorithm and a program is that the former is written by an algorithm designer and the lat",B (also C),B:openstax-intro-cs:p210:c0,544,"Application Programs Abstractions
+
+Next, the programmer writes a program. The main difference between an algorithm and a program is that the former is written by an algorithm designer and the latter is written by a programmer so that the program can be executed by a machine. These programs are called application programs, or simply, programs, and there are billions of them in existence today. Once the programmer finishes writing the program, there are two more steps before it can be executed by a computer.
+
+High-Level Programming Language",2,Paragraph complete; trailing heading 'High-Level Programming Language'.,claude-draft (pending author review)
+pos08,211,253,One low-level language designed to be computer friendly rather than human friendly is called assembly language. It does not use all the constructs found in HLLs,A,A:openstax-intro-cs:p211:c0,500,"Figure 5.7 A compiler takes code written in an HLL and converts it to “computer-friendly” and simple code called assembly language.
+
+One low-level language designed to be computer friendly rather than human friendly is called assembly language. It does not use all the constructs found in HLLs such as objects or sophisticated data structure, which leads to two challenges.
+
+The first challenge is to manage the output of the compiler, which is an assembly language program that you can open and read",2,Sampled assembly-language paragraph fully contained; chunk ends mid-sentence in the next paragraph.,claude-draft (pending author review)
+pos08,211,253,One low-level language designed to be computer friendly rather than human friendly is called assembly language. It does not use all the constructs found in HLLs,B (also C),B:openstax-intro-cs:p211:c0,709,"Figure 5.7 A compiler takes code written in an HLL and converts it to “computer-friendly” and simple code called assembly language.
+
+One low-level language designed to be computer friendly rather than human friendly is called assembly language. It does not use all the constructs found in HLLs such as objects or sophisticated data structure, which leads to two challenges.
+
+The first challenge is to manage the output of the compiler, which is an assembly language program that you can open and read. It is basically a text file, so it is written in English. Remember, computers do not understand English; they only relate to 1s and 0s. To deal with this challenge we use yet another program, shown in Figure",2,Sampled paragraph and the following one complete except the last sentence referencing a figure.,claude-draft (pending author review)
+pos09,212,338,"As we saw earlier, the output of the compiler is the input to the assembler so we need assemblers for each ISA in existence to generate a machine language file ",A,A:openstax-intro-cs:p212:c0,500,"then we need six compilers as shown in Table 5.1.
+
+Compiler# Input to the Compiler Output from the Compiler
+
+1 HLL 1 ISA 1
+
+2 HLL 2 ISA 2
+
+3 HLL 3 ISA 1
+
+4 HLL 1 ISA 2
+
+5 HLL 2 ISA 1
+
+6 HLL 3 ISA 2
+
+Table 5.1 Compilers and Their I/O
+
+As we saw earlier, the output of the compiler is the input to the assembler so we need assemblers for each ISA in existence to generate a machine language file (e.g., .exe file) that the processor can execute.
+
+Processor Abstractions
+
+As we cross the layer of ISA in",2,Sampled assembler paragraph fully contained; table rows above are flattened but readable.,claude-draft (pending author review)
+pos09,212,338,"As we saw earlier, the output of the compiler is the input to the assembler so we need assemblers for each ISA in existence to generate a machine language file ",B (also C),B:openstax-intro-cs:p212:c0,467,"then we need six compilers as shown in Table 5.1.
+
+Compiler# Input to the Compiler Output from the Compiler
+
+1 HLL 1 ISA 1
+
+2 HLL 2 ISA 2
+
+3 HLL 3 ISA 1
+
+4 HLL 1 ISA 2
+
+5 HLL 2 ISA 1
+
+6 HLL 3 ISA 2
+
+Table 5.1 Compilers and Their I/O
+
+As we saw earlier, the output of the compiler is the input to the assembler so we need assemblers for each ISA in existence to generate a machine language file (e.g., .exe file) that the processor can execute.
+
+Processor Abstractions",2,Sampled paragraph complete; flattened Table 5.1 precedes it.,claude-draft (pending author review)
+pos10,213,454,"The architecture (i.e., design) of the microprocessor (i.e., the processor) is called microarchitecture (Figure 5.9). Its main job is to design the different co",A,A:openstax-intro-cs:p213:c0,500,"Microarchitecture
+
+The architecture (i.e., design) of the microprocessor (i.e., the processor) is called microarchitecture (Figure 5.9). Its main job is to design the different components of the processor and decide how to connect them so that the processor can do its job. For example, one important piece inside the processor is the part that fetches the next instruction of the program. Another crucial part, called the control unit, is responsible for decoding, or understanding, what this instru",1,Microarchitecture paragraph cut mid-word ('this instru'); control-unit role incomplete.,claude-draft (pending author review)
+pos10,213,454,"The architecture (i.e., design) of the microprocessor (i.e., the processor) is called microarchitecture (Figure 5.9). Its main job is to design the different co",B (also C),B:openstax-intro-cs:p213:c0,890,"Microarchitecture
+
+The architecture (i.e., design) of the microprocessor (i.e., the processor) is called microarchitecture (Figure 5.9). Its main job is to design the different components of the processor and decide how to connect them so that the processor can do its job. For example, one important piece inside the processor is the part that fetches the next instruction of the program. Another crucial part, called the control unit, is responsible for decoding, or understanding, what this instruction wants to do and then tells the other components of the processor to execute this instruction. So, the control unit’s job is to take an instruction as input and generate signals to control the rest of the processor to make it execute the instructions. Other parts of the processor include the execution units that do the actual computations such as divide, multiply, add, and subtract.",2,Microarchitecture paragraph complete including the control unit and execution units.,claude-draft (pending author review)

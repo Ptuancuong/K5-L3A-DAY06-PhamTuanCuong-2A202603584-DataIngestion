@@ -1,4 +1,4 @@
 strategy,chunking,chunk_size,overlap,metadata,filter,vectorizer,hypothesis,dev_hit1,dev_hit3,test_hit1,test_hit3,notes
-A,,,,,,,,,,,,
-B,,,,,,,,,,,,
-C,,,,,,,,,,,,
+A,fixed-size characters within a page,500,50,"document_id, source, page, chapter, section, section_title, char_start, char_end",none,intfloat/multilingual-e5-small (384d; local CPU; query:/passage: prefixes; cosine; exact search in pgvector),Fixed windows cut sentences and ideas so coherence is lower; evidence longer than ~450 chars may be split; more chunks,12/15,14/15,6/6,6/6,538 chunks; ingest 13.6 s first run (embedding 12.6 s); cost 0 USD
+B,paragraph/heading-aware within a page (greedy merge; sentence split if oversized),max 1000,0,same as A,none,same as A,Keeping paragraphs whole improves coherence and Hit@1 with fewer chunks; longer chunks may dilute similarity for narrow questions,13/15,14/15,5/6,6/6,323 chunks; ingest 12.9 s first run (embedding 11.9 s); cost 0 USD
+C,identical to B (reuses B index and vectors),max 1000,0,same as A,chapter = value supplied by question context; applied only to questions with a filter (4/21); others run exactly as B,same as A,Filtering by chapter removes off-scope chunks for concepts defined in both chapters; only the filter differs from B,13/15,14/15,5/6,6/6,filter compliance dev 2/2 and test 2/2 (B: 1/2 and 1/2); selected on dev by pre-registered criteria

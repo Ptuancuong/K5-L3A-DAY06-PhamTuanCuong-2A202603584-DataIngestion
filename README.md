@@ -45,3 +45,52 @@ Dùng cùng dữ liệu, model và câu hỏi cho cả ba cấu hình. Tách **1
 | Cách nộp bài | [SUBMISSION.md](SUBMISSION.md) |
 
 [data/format-example.json](data/format-example.json) chỉ minh họa định dạng, không phải corpus đủ điều kiện. Phần xử lý và benchmark do bạn tự hiện thực; không bắt buộc xây chatbot.
+
+---
+
+## Bài làm
+
+**Phạm Tuấn Cường · 2A202603584 · L3A**. Báo cáo: [report/individual/2A202603584_PhamTuanCuong.md](report/individual/2A202603584_PhamTuanCuong.md).
+
+- Corpus: OpenStax *Introduction to Computer Science*, chương 5–6, gồm 79 trang nội dung, giấy phép CC BY-NC-SA 4.0. Xem [data/manifest.json](data/manifest.json).
+- Embedding: `intfloat/multilingual-e5-small` (384 chiều), chạy local trên CPU.
+- Vector store: PostgreSQL 16 + pgvector 0.8.7, metric cosine, exact search.
+- Ba chiến lược: A là chunk cố định 500/50; B là chunk theo đoạn, tối đa 1000; C là B cộng filter `chapter`.
+
+### Tái lập (Windows PowerShell, chạy từ `starter/`)
+
+```powershell
+cd starter
+py -3.11 -m venv .venv; .venv\Scripts\Activate.ps1
+pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+pip install -r requirements.txt
+Copy-Item .env.example .env        # rồi đặt EMBEDDING_MODEL=intfloat/multilingual-e5-small
+docker compose -p day6_student_starter up -d --wait
+python scripts/check_setup.py      # Setup OK
+
+# PDF gốc (56 MB, không commit):
+mkdir data/raw; curl -o data/raw/intro_cs.pdf https://assets.openstax.org/oscms-prodcms/media/documents/Introduction_To_Computer_Science_-_WEB.pdf
+
+python -m src.run prepare          # data/pages.jsonl + data/manifest.json (79 trang)
+python -m src.benchmark_check      # kiểm chứng evidence của 21 câu
+python -m src.run ingest           # index A và B
+python -m src.run reingest-check   # nạp lại không nhân đôi
+python -m src.run change-check     # xử lý tài liệu đổi (bảng tạm)
+python -m src.run query --split dev
+python -m src.run query --split test
+python -m src.run evaluate         # results/summary.json
+python -m src.audit_samples        # sinh mẫu audit (xóa nhãn cũ)
+python -m src.audit_labels_draft   # nhãn nháp (AI), cần tác giả duyệt
+python -m src.audit_summary        # results/audit/audit_summary.json
+```
+
+### Cấu trúc bài làm
+
+| Đường dẫn | Nội dung |
+|---|---|
+| `starter/src/` | ingestion (PyMuPDF), chunking, embeddings, store (pgvector), evaluation, run, benchmark_check, audit_* |
+| `starter/src/config.py` | đường dẫn, định nghĩa corpus, tham số A/B/C |
+| `data/` | `manifest.json`, `pages.jsonl` (text đã chuẩn hóa của các trang được tính) |
+| `benchmark/` | `questions.jsonl` (15 dev / 6 test), `README.md`, `selection_criteria.md` |
+| `artifacts/experiment_log.csv` | cấu hình, giả thuyết và kết quả A/B/C |
+| `results/` | trace top-3, `summary.json`, `ingest_stats.json`, `reingest_check.json`, `change_check.json`, `errors.log`, `audit/` |

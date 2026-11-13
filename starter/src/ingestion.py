@@ -143,14 +143,14 @@ def load_pdf(path: Path, document_id: str, source: str, pages: list[int] | None 
                 para = strip_attribution(normalize_text(raw))
                 if not para:
                     continue
+                if parts:
+                    offset += 2  # "\n\n" separator
                 if size >= SECTION_HEADING_MIN_SIZE:
                     m = _SECTION_RE.match(one_line)
                     if m:
                         current = {"chapter": int(m.group(1)), "section": f"{m.group(1)}.{m.group(2)}",
                                    "section_title": m.group(3).strip()}
-                        marks.append((offset, current["section"], current["section_title"]))
-                if parts:
-                    offset += 2  # "\n\n" separator
+                        marks.append((offset, current["section"], current["section_title"]))  # heading start
                 parts.append(para)
                 offset += len(para)
             text = "\n\n".join(parts)

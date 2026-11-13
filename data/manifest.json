@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T03:36:18Z",
+  "generated_at": "2026-11-13T03:46:44Z",
   "counting_rule": "A page is counted when it lies in the lesson-body page range of a chosen chapter (chapter opener and Chapter Review pages excluded) AND its normalised extracted text has >= 1000 characters. Page numbers are 1-based physical PDF page numbers (not the printed page labels).",
   "sources": [
     {

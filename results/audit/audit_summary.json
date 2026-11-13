@@ -1,0 +1,79 @@
+{
+  "labeled_by": [
+    "claude-draft (pending author review)"
+  ],
+  "coherence": {
+    "A": {
+      "n": 10,
+      "mean_of_2": 1.3,
+      "counts": {
+        "1": 7,
+        "2": 3
+      }
+    },
+    "B": {
+      "n": 10,
+      "mean_of_2": 1.9,
+      "counts": {
+        "2": 9,
+        "1": 1
+      }
+    },
+    "C": {
+      "n": 10,
+      "mean_of_2": 1.9,
+      "counts": {
+        "2": 9,
+        "1": 1
+      }
+    }
+  },
+  "grounding": {
+    "A": {
+      "n": 6,
+      "mean_of_2": 2.0,
+      "counts_0_1_2": [
+        0,
+        0,
+        6
+      ]
+    },
+    "B": {
+      "n": 6,
+      "mean_of_2": 2.0,
+      "counts_0_1_2": [
+        0,
+        0,
+        6
+      ]
+    },
+    "C": {
+      "n": 6,
+      "mean_of_2": 2.0,
+      "counts_0_1_2": [
+        0,
+        0,
+        6
+      ]
+    }
+  },
+  "metadata": {
+    "A": {
+      "correct_str": "18/18",
+      "filter_compliance_str": "2/2",
+      "filter_violations": []
+    },
+    "B": {
+      "correct_str": "18/18",
+      "filter_compliance_str": "1/2",
+      "filter_violations": [
+        "t05"
+      ]
+    },
+    "C": {
+      "correct_str": "18/18",
+      "filter_compliance_str": "2/2",
+      "filter_violations": []
+    }
+  }
+}
