@@ -195,6 +195,37 @@ def cmd_reingest_check(_args) -> None:
         sys.exit("Re-ingest changed row counts: duplicates or missing rows")
 
 
+def cmd_change_check(_args) -> None:
+    """Simulate a changed source document in a scratch table: obsolete chunks must be
+    deleted and changed chunks rewritten, unchanged chunks untouched."""
+    from .store import PgVectorStore
+
+    embedder = _embedder()
+    store = PgVectorStore(config.DATABASE_URL, embedder.dimensions, table="chunks_change_test")
+    store.create_schema()
+    pages = load_pages()[:3]
+    v1 = build_chunks("B", pages)
+    w1 = store.upsert("B", v1, embedder.embed_documents([c.text for c in v1]), embedder.model_name)
+    # "New version": page 2 shortened to its first paragraph, page 3 text edited.
+    changed = [pages[0],
+               DocumentPage(pages[1].document_id, pages[1].source, pages[1].page,
+                            pages[1].text.split("\n\n")[0], pages[1].metadata),
+               DocumentPage(pages[2].document_id, pages[2].source, pages[2].page,
+                            pages[2].text.replace("computer", "COMPUTER", 1), pages[2].metadata)]
+    v2 = build_chunks("B", changed)
+    w2 = store.upsert("B", v2, embedder.embed_documents([c.text for c in v2]), embedder.model_name)
+    rows = store.count("B")
+    with store._connect() as conn:
+        conn.execute("DROP TABLE chunks_change_test")
+    result = {"checked_at": _now(), "pages": [p.page for p in pages], "v1_chunks": len(v1),
+              "v1_write": w1, "v2_chunks": len(v2), "v2_write": w2, "rows_after_v2": rows,
+              "ok": rows == len(v2) and w2["deleted_obsolete"] == len(v1) - len(v2)}
+    _write_json(config.RESULTS / "change_check.json", result)
+    print(json.dumps(result, indent=2))
+    if not result["ok"]:
+        sys.exit("change-check failed")
+
+
 # ---------------------------------------------------------------- query / evaluate
 def cmd_query(args) -> None:
     questions = [q for q in _read_jsonl(config.BENCHMARK) if q["split"] == args.split]
@@ -240,6 +271,7 @@ def main() -> None:
     p.add_argument("--index", choices=config.INDEXES)
     p.set_defaults(func=cmd_ingest)
     sub.add_parser("reingest-check").set_defaults(func=cmd_reingest_check)
+    sub.add_parser("change-check").set_defaults(func=cmd_change_check)
     p = sub.add_parser("query")
     p.add_argument("--split", choices=["dev", "test"], required=True)
     p.set_defaults(func=cmd_query)

@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-13T03:41:50Z",
+  "rows_before": {
+    "A": 538,
+    "B": 323
+  },
+  "rows_after": {
+    "A": 538,
+    "B": 323
+  },
+  "expected_chunks": {
+    "A": 538,
+    "B": 323
+  },
+  "second_run_writes": {
+    "A": {
+      "written": 0,
+      "deleted_obsolete": 0,
+      "batch": 538
+    },
+    "B": {
+      "written": 0,
+      "deleted_obsolete": 0,
+      "batch": 323
+    }
+  },
+  "no_duplicates": true
+}

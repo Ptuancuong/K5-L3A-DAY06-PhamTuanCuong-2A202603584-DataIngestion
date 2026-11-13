@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-13T03:42:31Z",
+  "pages": [
+    204,
+    205,
+    206
+  ],
+  "v1_chunks": 13,
+  "v1_write": {
+    "written": 13,
+    "deleted_obsolete": 0,
+    "batch": 13
+  },
+  "v2_chunks": 8,
+  "v2_write": {
+    "written": 2,
+    "deleted_obsolete": 5,
+    "batch": 8
+  },
+  "rows_after_v2": 8,
+  "ok": true
+}

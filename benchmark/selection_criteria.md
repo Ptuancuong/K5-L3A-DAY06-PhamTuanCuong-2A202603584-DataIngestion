@@ -13,4 +13,16 @@ Ngày chốt: 2026-11-13, trước lần chạy `query` đầu tiên. Bằng ch�
 
 ## Kết quả chọn trên dev
 
-_(điền sau khi chạy dev, trước khi chạy test)_
+Lần chạy dev: 2026-11-13T03:43Z. Số liệu lấy từ `results/summary.json` và `results/traces_*_dev.jsonl`.
+
+| Strategy | Hit@3 dev | Hit@1 dev | Filter tuân thủ (câu filter của dev) |
+| -------- | --------- | --------- | ------------------------------------ |
+| A        | 14/15     | 12/15     | 0/2 (A không lọc)                    |
+| B        | 14/15     | 13/15     | 1/2 (B không lọc)                    |
+| C        | 14/15     | 13/15     | 2/2                                  |
+
+Áp dụng thứ tự tiêu chí: (1) Hit@3 bằng nhau; (2) Hit@1 thì B = C > A; (3) tuân thủ filter thì C > B. **Chọn C.**
+
+Lưu ý theo tiêu chí 4: chênh lệch giữa A và B/C chỉ là 1 câu Hit@1, nên **không phân biệt được với mẫu nhỏ**. Lựa chọn C chủ yếu dựa vào tỷ lệ tuân thủ filter.
+
+Lựa chọn được commit trước khi chạy `query --split test`.

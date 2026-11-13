@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-11-13T03:43:00Z",
+  "metrics": {
+    "A/dev": {
+      "strategy": "A",
+      "split": "dev",
+      "N": 15,
+      "hit1": 12,
+      "hit3": 14,
+      "evidence_split": 0,
+      "filter_N": 2,
+      "filter_compliant": 0,
+      "missed_ids": [
+        "d15"
+      ],
+      "hit1_str": "12/15",
+      "hit3_str": "14/15",
+      "filter_compliance_str": "0/2"
+    },
+    "B/dev": {
+      "strategy": "B",
+      "split": "dev",
+      "N": 15,
+      "hit1": 13,
+      "hit3": 14,
+      "evidence_split": 0,
+      "filter_N": 2,
+      "filter_compliant": 1,
+      "missed_ids": [
+        "d15"
+      ],
+      "hit1_str": "13/15",
+      "hit3_str": "14/15",
+      "filter_compliance_str": "1/2"
+    },
+    "C/dev": {
+      "strategy": "C",
+      "split": "dev",
+      "N": 15,
+      "hit1": 13,
+      "hit3": 14,
+      "evidence_split": 0,
+      "filter_N": 2,
+      "filter_compliant": 2,
+      "missed_ids": [
+        "d15"
+      ],
+      "hit1_str": "13/15",
+      "hit3_str": "14/15",
+      "filter_compliance_str": "2/2"
+    }
+  }
+}

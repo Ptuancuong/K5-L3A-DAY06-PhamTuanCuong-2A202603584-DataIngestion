@@ -1,0 +1,71 @@
+{
+  "A": {
+    "run_at": "2026-11-13T03:41:38Z",
+    "params": {
+      "index": "A",
+      "chunker": "fixed",
+      "size": 500,
+      "overlap": 50,
+      "use_filter": false
+    },
+    "pages": 79,
+    "chunk_count": 538,
+    "rows_in_store": 538,
+    "chars_total": 253992,
+    "len_min": 52,
+    "len_median": 500.0,
+    "len_mean": 472.1,
+    "len_max": 500,
+    "approx_tokens_total": 63498,
+    "seconds_chunk": 0.001,
+    "seconds_embed": 12.591,
+    "seconds_total": 13.209,
+    "cost_usd": 0.0,
+    "write": {
+      "written": 0,
+      "deleted_obsolete": 0,
+      "batch": 538
+    },
+    "model": "intfloat/multilingual-e5-small",
+    "dimensions": 384,
+    "device": "cpu"
+  },
+  "B": {
+    "run_at": "2026-11-13T03:41:50Z",
+    "params": {
+      "index": "B",
+      "chunker": "paragraph",
+      "max_size": 1000,
+      "use_filter": false
+    },
+    "pages": 79,
+    "chunk_count": 323,
+    "rows_in_store": 323,
+    "chars_total": 230758,
+    "len_min": 59,
+    "len_median": 768,
+    "len_mean": 714.4,
+    "len_max": 998,
+    "approx_tokens_total": 57689,
+    "seconds_chunk": 0.01,
+    "seconds_embed": 11.861,
+    "seconds_total": 12.236,
+    "cost_usd": 0.0,
+    "write": {
+      "written": 0,
+      "deleted_obsolete": 0,
+      "batch": 323
+    },
+    "model": "intfloat/multilingual-e5-small",
+    "dimensions": 384,
+    "device": "cpu"
+  },
+  "_environment": {
+    "python": "3.11.4",
+    "torch": "2.15.0+cpu",
+    "sentence_transformers": "6.3.0",
+    "psycopg": "3.3.8",
+    "pgvector_py": "0.5.1",
+    "pymupdf": "2.1"
+  }
+}
